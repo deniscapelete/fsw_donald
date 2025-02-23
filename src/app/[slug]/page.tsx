@@ -40,11 +40,15 @@ export default async function RestaurantPage({ params }: RestaurantPageProps) {
             {/* Método de consumação */}
             <div className="pt-14 grid grid-cols-2 gap-4">
                 <ConsumptionMethodOption
+                    slug={slug}
+                    option="DINE_IN"
                     imageUrl="/dine_in.png"
                     imageAlt="Para comer aqui"
                     buttonText="Para comer aqui"
                 />
                 <ConsumptionMethodOption
+                    slug={slug}
+                    option="TAKEAWAY"
                     imageUrl="/take_away.png"
                     imageAlt="Para levar"
                     buttonText="Para levar"
