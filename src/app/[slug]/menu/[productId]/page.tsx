@@ -17,6 +17,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 select: {
                     name: true,
                     avatarImageUrl: true,
+                    slug: true,
                 },
             },
         },
@@ -24,11 +25,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
     if (!product) {
         return notFound();
     }
+
+    if (product.restaurant.slug.toUpperCase() != slug.toUpperCase()) {
+        return notFound();
+    }
+
     return (
-        <>
+        <div className="flex h-full flex-col">
             <ProductHeader product={product} />
 
             <ProductDatails product={product} />
-        </>
+        </div>
     )
 }
