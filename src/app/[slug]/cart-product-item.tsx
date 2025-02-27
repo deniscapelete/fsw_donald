@@ -11,7 +11,7 @@ interface CartProductItemProps {
     product: CartProduct;
 }
 export function CartProductItem({ product }: CartProductItemProps) {
-    const { descreaseProductQuantity } = useContext(CartContext)
+    const { descreaseProductQuantity, increaseProductQuantity } = useContext(CartContext)
     return (
         <div className="flex items-center justify-between">
             {/* ESQUERDA */}
@@ -24,11 +24,19 @@ export function CartProductItem({ product }: CartProductItemProps) {
                     <p className="text-sm font-semibold">{formatCurrency(product.price)}</p>
                     {/* QUANTIDADE */}
                     <div className="flex items-center gap-1 text-center">
-                        <Button className="w-7 h-7 rounded-lg" variant={"outline"} onClick={() => descreaseProductQuantity(product.id)}>
+                        <Button
+                            className="w-7 h-7 rounded-lg"
+                            variant={"outline"}
+                            onClick={() => descreaseProductQuantity(product.id)}
+                        >
                             <ChevronLeftIcon />
                         </Button>
                         <p className="text-xs w-7 ">{product.quantity}</p>
-                        <Button className="w-7 h-7 rounded-lg" variant={"destructive"}>
+                        <Button
+                            className="w-7 h-7 rounded-lg"
+                            variant={"destructive"}
+                            onClick={() => increaseProductQuantity(product.id)}
+                        >
                             <ChevronRightIcon />
                         </Button>
                     </div>
